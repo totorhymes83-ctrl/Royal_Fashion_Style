@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Fashion | Women Wear</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Royal Fashion</h1>
+    <p>Traditional & Modern Women's Wear</p>
+</header>
+
+<div class="info">
+    <p>📍 Sabzi Mandi, Raebareli – 229001</p>
+    <p>🕒 10:00 AM – 8:00 PM</p>
+    <p class="rating">★★★★★ 5.0 Rating</p>
+</div>
+
+<!-- ADMIN PANEL -->
+<section class="admin">
+    <h2>Admin – Add Product</h2>
+    <input type="text" id="img" placeholder="Image URL">
+    <input type="text" id="name" placeholder="Product Name">
+    <input type="number" id="price" placeholder="Price">
+    <select id="category">
+        <option value="Suit">Suit</option>
+        <option value="Plazo">Plazo</option>
+        <option value="Plazo Set">Plazo Set</option>
+    </select>
+    <button onclick="addProduct()">Add Product</button>
+</section>
+
+<!-- PRODUCTS -->
+<section>
+    <h2>Our Collection</h2>
+    <div class="gallery" id="productList">
+
+        <!-- Default Product -->
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1620799139507-2c6d3d0c8e65">
+            <h4>Blue Printed Suit</h4>
+            <p>₹2,199</p>
+            <a class="btn" href="https://wa.me/917007928775?text=I%20want%20Blue%20Printed%20Suit">Buy Now</a>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Royal Fashion | Raebareli</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/917007928775">💬</a>
+
+<!-- ADMIN SCRIPT -->
+<script>
+function addProduct() {
+    const img = document.getElementById("img").value;
+    const name = document.getElementById("name").value;
+    const price = document.getElementById("price").value;
+    const category = document.getElementById("category").value;
+
+    if(!img || !name || !price) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    const productHTML = `
+    <div class="product">
+        <img src="${img}">
+        <h4>${name}</h4>
+        <p>₹${price}</p>
+        <a class="btn" href="https://wa.me/917007928775?text=I%20want%20${encodeURIComponent(name)}">Buy Now</a>
+    </div>`;
+
+    document.getElementById("productList").insertAdjacentHTML("beforeend", productHTML);
+
+    document.getElementById("img").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("price").value = "";
+}
+</script>
+
+</body>
+</html>
